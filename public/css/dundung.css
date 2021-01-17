@@ -1,0 +1,32 @@
+
+.alert-success{
+    transition: all 2s ease-in-out ;
+    animation: ani 2s ease-in-out  alternate ;
+}
+
+@keyframes ani {
+    0% {
+        transform: rotate(0deg);
+        left: 0px;
+    }
+    25% {
+        transform: rotate(5deg);
+        left: 0px;
+    }
+    50% {
+        transform: rotate(0deg);
+
+    }
+    55% {
+        transform: rotate(0deg);
+
+    }
+    70% {
+        transform: rotate(0deg);
+
+    }
+    100% {
+        transform: rotate(0deg);
+        left: 0px;
+    }
+}

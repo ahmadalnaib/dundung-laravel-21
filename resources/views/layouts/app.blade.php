@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/dundung.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -105,5 +106,7 @@
             @endauth
         </main>
     </div>
+
+    <script src="{{asset('/js/dundung.js')}}"></script>
 </body>
 </html>
