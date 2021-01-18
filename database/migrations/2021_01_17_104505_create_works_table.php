@@ -24,7 +24,6 @@ class CreateWorksTable extends Migration
             $table->string('contact');
             $table->timestamp('published_at')->nullable();
 
-
             $table->timestamps();
         });
     }

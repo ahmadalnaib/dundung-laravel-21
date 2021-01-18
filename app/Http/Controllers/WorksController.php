@@ -97,8 +97,10 @@ class WorksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(work $work)
     {
-        //
+        $work->delete();
+        return redirect()->route('works.index')
+            ->with('success','Job has been deleted');
     }
 }
