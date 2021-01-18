@@ -37,9 +37,8 @@
 
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea class="form-control" name="description" id="description" cols="5" rows="5">
-                        {{old('description')}}
-                    </textarea>
+                    <input id="description" type="hidden" name="description" value="{{old('description')}}">
+                    <trix-editor input="description"></trix-editor>
                 </div>
 
 
@@ -62,7 +61,7 @@
 
                 <div class="form-group ">
                     <label for="published_at">Published At</label>
-                    <input type="date"  id='published_at' class="form-control" name="published_at" value="{{old('published_at')}}">
+                    <input type="datetime-local"  id='published_at' class="form-control" name="published_at" value="{{old('published_at')}}">
                 </div>
 
                 <div class="form-group">
@@ -72,3 +71,6 @@
         </div>
     </div>
 @endsection
+
+
+

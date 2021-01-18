@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Works\CreateWorksRequest;
 use Illuminate\Http\Request;
 use App\Models\Work;
+use Illuminate\Support\Facades\Storage;
 
 class WorksController extends Controller
 {
@@ -48,7 +49,8 @@ class WorksController extends Controller
             'description'=>$request->description,
             'image'=>$image,
             'link'=>$request->link,
-            'contact'=>$request->contact
+            'contact'=>$request->contact,
+            'published_at'=>$request->published_at
         ]);
 
         return redirect()->route('works.index')
@@ -103,6 +105,7 @@ class WorksController extends Controller
 
         if($work->trashed())
         {
+            Storage::delete($work->image);
             $work->forceDelete();
         } else {
             $work->delete();
