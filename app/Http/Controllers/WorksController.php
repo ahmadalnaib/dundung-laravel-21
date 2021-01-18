@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Works\CreateWorksRequest;
 use Illuminate\Http\Request;
 use App\Models\Work;
 
@@ -34,9 +35,25 @@ class WorksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateWorksRequest $request)
     {
-        //
+//        upload the image
+        $image= $request->image->store('works');
+
+        Work::create([
+            'name'=>$request->name,
+            'title'=>$request->title,
+            'location'=>$request->location,
+            'description'=>$request->description,
+            'image'=>$image,
+            'link'=>$request->link,
+            'contact'=>$request->contact
+        ]);
+
+        return redirect()->route('works.index')
+               ->with('success','Job created successfully');
+
+
     }
 
     /**

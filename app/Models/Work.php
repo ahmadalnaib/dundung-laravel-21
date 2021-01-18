@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Work extends Model
 {
     use HasFactory;
+
+    protected $fillable=[
+        'name',
+        'title',
+        'location',
+        'description',
+        'image',
+        'link',
+        'contact',
+        'published_at'
+    ];
 }
