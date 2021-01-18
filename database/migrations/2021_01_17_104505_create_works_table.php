@@ -18,8 +18,7 @@ class CreateWorksTable extends Migration
             $table->string('name');
             $table->string('title');
             $table->string('location');
-            $table->string('description');
-            $table->text('content');
+            $table->text('description');
             $table->string('image');
             $table->string('link');
             $table->string('contact');
