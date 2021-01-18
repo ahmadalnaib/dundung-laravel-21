@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Works\CreateWorksRequest;
+use App\Http\Requests\works\UpdateWorkRequest;
 use Illuminate\Http\Request;
 use App\Models\Work;
 use Illuminate\Support\Facades\Storage;
@@ -76,9 +77,9 @@ class WorksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Work $work)
     {
-        //
+        return view('works.edit',compact('work'));
     }
 
     /**
@@ -88,9 +89,29 @@ class WorksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateWorkRequest $request, Work $work)
     {
-        //
+
+        $data=$request->only([
+            'name',
+            'title',
+            'location',
+            'description',
+            'link',
+            'contact',
+        ]);
+
+        if($request->hasFile('image'))
+        {
+            $image= '/storage/'.$request->file('image')->store('works');
+            Storage::delete('/storage/'.$work->image);
+
+            $data['image']= $image;
+        }
+        $work->update($data);
+
+        return redirect()->route('works.index')
+            ->with('success','Job updated successfully');
     }
 
     /**
@@ -105,7 +126,7 @@ class WorksController extends Controller
 
         if($work->trashed())
         {
-            Storage::delete($work->image);
+            Storage::delete('/storage/'.$work->image);
             $work->forceDelete();
         } else {
             $work->delete();

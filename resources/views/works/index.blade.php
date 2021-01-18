@@ -29,11 +29,11 @@
                     <td>{{$work->title}}</td>
                     <td>
                     <td>
-                        <a href="{{route('works.edit',$work)}}" class="btn btn-info btn-sm">Edit</a>
+                        <a href="{{route('works.edit',$work->id)}}" class="btn btn-info btn-sm">Edit</a>
 
                     </td>
                     <td>
-                        <form action="{{route('works.destroy',$work)}}" method="post">
+                        <form action="{{route('works.destroy',$work->id)}}" method="post">
                             @method('DELETE')
                             @csrf
                             <button onclick="return confirm('Are you sure you want to delete this job ?')" type="submit" class="btn btn-danger btn-sm del">Trash</button>

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Works;
+namespace App\Http\Requests\works;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateWorksRequest extends FormRequest
+class UpdateWorkRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,11 +28,8 @@ class CreateWorksRequest extends FormRequest
             'title'=>'required',
             'location'=>'required',
             'description'=>'required|min:20',
-            'image'=>'required|mimes:jpeg,png,jpg|max:3000',
             'link'=>'required',
             'contact'=>'required'
         ];
     }
 }
-
-
