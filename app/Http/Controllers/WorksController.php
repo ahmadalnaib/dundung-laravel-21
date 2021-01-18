@@ -15,8 +15,9 @@ class WorksController extends Controller
      */
     public function index()
     {
-        return view('works.index')
-             ->with('works',Work::all());
+        $works=Work::latest()->simplePaginate(1);
+        return view('works.index',compact('works'));
+
     }
 
     /**
@@ -38,7 +39,7 @@ class WorksController extends Controller
     public function store(CreateWorksRequest $request)
     {
 //        upload the image
-        $image= $request->image->store('works');
+        $image= '/storage/'.$request->file('image')->store('works');
 
         Work::create([
             'name'=>$request->name,

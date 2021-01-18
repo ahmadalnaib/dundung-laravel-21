@@ -28,7 +28,7 @@ class CreateWorksRequest extends FormRequest
             'title'=>'required',
             'location'=>'required',
             'description'=>'required|min:20',
-            'image'=>'required|mimes:jpeg,png.jpg|max:3000',
+            'image'=>'required|mimes:jpeg,png,jpg|max:3000',
             'link'=>'required',
             'contact'=>'required'
         ];
