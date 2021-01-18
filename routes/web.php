@@ -25,4 +25,6 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('/categories',CategoriesController::class);
 Route::resource('/works',WorksController::class);
+Route::get('/trashed-jobs', [WorksController::class, 'trashed'])->name('trashed');
+Route::get('/work/restore/{id}', [WorksController::class, 'restore'])->name('restore');
 

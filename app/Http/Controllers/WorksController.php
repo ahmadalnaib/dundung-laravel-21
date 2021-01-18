@@ -97,10 +97,34 @@ class WorksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(work $work)
+    public function destroy($id)
     {
-        $work->delete();
-        return redirect()->route('works.index')
+        $work=Work::withTrashed()->where('id',$id)->firstOrFail();
+
+        if($work->trashed())
+        {
+            $work->forceDelete();
+        } else {
+            $work->delete();
+        }
+        return redirect()->back()
             ->with('success','Job has been deleted');
     }
+
+
+    public  function  trashed()
+    {
+       $works=Work::onlyTrashed()->get();
+       return view('works.trashed',compact('works'));
+    }
+
+    public function restore($id)
+    {
+      $work=Work::withTrashed()->where('id',$id)->firstOrFail();
+      $work->restore();
+      return redirect()->route('works.index')
+          ->with('success','Job restore');
+    }
+
+
 }
