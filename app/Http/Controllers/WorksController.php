@@ -104,7 +104,9 @@ class WorksController extends Controller
         if($request->hasFile('image'))
         {
             $image= '/storage/'.$request->file('image')->store('works');
-            Storage::delete('/storage/'.$work->image);
+
+//            //delete image function is in work models
+          $work->deleteImage();
 
             $data['image']= $image;
         }
@@ -126,7 +128,8 @@ class WorksController extends Controller
 
         if($work->trashed())
         {
-            Storage::delete('/storage/'.$work->image);
+//            deleteImage function in work models
+           $work->deleteImage();
             $work->forceDelete();
         } else {
             $work->delete();
@@ -144,7 +147,7 @@ class WorksController extends Controller
 
     public function restore($id)
     {
-      $work=Work::withTrashed()->where('id',$id)->firstOrFail();
+        $work=Work::withTrashed()->where('id',$id)->firstOrFail();
       $work->restore();
       return redirect()->route('works.index')
           ->with('success','Job restore');
