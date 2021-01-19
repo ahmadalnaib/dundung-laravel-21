@@ -22,10 +22,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::resource('/categories',CategoriesController::class);
-Route::resource('/works',WorksController::class);
 
-Route::get('/trashed-jobs', [WorksController::class, 'trashed'])->name('trashed');
-Route::put('/restore-jobs/{work}', [WorksController::class, 'restore'])->name('restore');
+Route::middleware(['auth'])->group(function (){
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/trashed-jobs', [WorksController::class, 'trashed'])->name('trashed');
+    Route::put('/restore-jobs/{work}', [WorksController::class, 'restore'])->name('restore');
+
+    Route::resource('/categories',CategoriesController::class);
+    Route::resource('/works',WorksController::class);
+
+});
+
 

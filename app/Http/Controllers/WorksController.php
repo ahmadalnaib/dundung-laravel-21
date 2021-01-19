@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Storage;
 
 class WorksController extends Controller
 {
+
+
+    public  function __construct()
+    {
+        $this->middleware('verifiedCategoryCount')
+              ->only('create','store');
+    }
     /**
      * Display a listing of the resource.
      *
