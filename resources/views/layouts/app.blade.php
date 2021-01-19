@@ -82,11 +82,7 @@
 
             @auth
             <div class="container">
-                @if(session('success'))
-                    <div class=" alert alert-success">
-                        {{session('success')}}
-                    </div>
-                @endif
+               @include('partials.messages')
             <div class="row">
                 <div class="col-md-4">
                   <ul class="list-group">
@@ -95,6 +91,10 @@
                       </li>
                       <li class="list-group-item">
                           <a href="{{route('categories.index')}}">✔ Categories </a>
+                      </li>
+
+                      <li class="list-group-item">
+                          <a href="{{route('tags.index')}}">🎈 Tags </a>
                       </li>
                   </ul>
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TagsController;
 use App\Http\Controllers\WorksController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ Route::middleware(['auth'])->group(function (){
 
     Route::resource('/categories',CategoriesController::class);
     Route::resource('/works',WorksController::class);
+    Route::resource('/tags',TagsController::class);
 
 });
 

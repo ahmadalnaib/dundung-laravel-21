@@ -149,7 +149,7 @@ class WorksController extends Controller
             $work->delete();
         }
         return redirect()->back()
-            ->with('success','Job has been deleted');
+            ->with('danger','Job has been deleted');
     }
 
 

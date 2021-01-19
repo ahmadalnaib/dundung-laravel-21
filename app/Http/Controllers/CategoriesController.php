@@ -100,6 +100,6 @@ class CategoriesController extends Controller
     {
         $category->delete();
         return redirect()->route('categories.index')
-            ->with('success','Category has been deleted');
+            ->with('danger','Category has been deleted');
     }
 }

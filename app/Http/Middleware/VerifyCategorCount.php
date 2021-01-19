@@ -19,7 +19,7 @@ class VerifyCategorCount
     {
         if(Category::all()->count()===0)
         {
-          return redirect()->route('categories.create')->with('success','you must add a categories first');
+          return redirect()->route('categories.create')->with('danger','you must add a categories first');
         }
         return $next($request);
     }
