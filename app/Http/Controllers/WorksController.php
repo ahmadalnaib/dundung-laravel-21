@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Works\CreateWorksRequest;
 use App\Http\Requests\works\UpdateWorkRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Work;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,7 @@ class WorksController extends Controller
      */
     public function index()
     {
-        $works=Work::latest()->simplePaginate(1);
+        $works=Work::latest()->simplePaginate(4);
         return view('works.index',compact('works'));
 
     }
@@ -29,7 +30,8 @@ class WorksController extends Controller
      */
     public function create()
     {
-        return view('works.create');
+        $categories=Category::all();
+        return view('works.create',compact('categories'));
     }
 
     /**
@@ -45,13 +47,14 @@ class WorksController extends Controller
 
         Work::create([
             'name'=>$request->name,
-            'title'=>$request->title,
+            'title'=>$request->title ,
             'location'=>$request->location,
             'description'=>$request->description,
             'image'=>$image,
             'link'=>$request->link,
             'contact'=>$request->contact,
-            'published_at'=>$request->published_at
+            'published_at'=>$request->published_at,
+            'category_id'=>$request->category_id,
         ]);
 
         return redirect()->route('works.index')
@@ -79,7 +82,8 @@ class WorksController extends Controller
      */
     public function edit(Work $work)
     {
-        return view('works.edit',compact('work'));
+        $categories=Category::all();
+        return view('works.edit',compact('work','categories'));
     }
 
     /**
@@ -99,6 +103,8 @@ class WorksController extends Controller
             'description',
             'link',
             'contact',
+            'category_id'
+
         ]);
 
         if($request->hasFile('image'))
@@ -111,6 +117,7 @@ class WorksController extends Controller
             $data['image']= $image;
         }
         $work->update($data);
+
 
         return redirect()->route('works.index')
             ->with('success','Job updated successfully');

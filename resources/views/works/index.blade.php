@@ -14,9 +14,10 @@
         <div class="card-body">
          <table class="table">
              <thead>
+             <th>Category</th>
              <th>Image</th>
              <th>Title</th>
-             <th></th>
+
              <th></th>
              <th></th>
 
@@ -25,13 +26,16 @@
              <tbody>
             @foreach($works as $work)
                 <tr>
+                    <td>
+                        <a href="{{route('categories.edit',$work->category->id)}}">   {{$work->category->name}}</a>
+                    </td>
                     <td><img src="{{asset($work->image)}}" width="60px" height="60px" alt=""></td>
                     <td>{{$work->title}}</td>
-                    <td>
+
                     <td>
                         <a href="{{route('works.edit',$work->id)}}" class="btn btn-info btn-sm">Edit</a>
-
                     </td>
+
                     <td>
                         <form action="{{route('works.destroy',$work->id)}}" method="post">
                             @method('DELETE')
@@ -39,6 +43,7 @@
                             <button onclick="return confirm('Are you sure you want to delete this job ?')" type="submit" class="btn btn-danger btn-sm del">Trash</button>
                         </form>
                     </td>
+
 
                 </tr>
             @endforeach

@@ -12,14 +12,16 @@
      <div class="card-body">
          <table class="table">
              <thead>
+             <th>Jobs Count</th>
              <th>Name</th>
-             <th></th>
+
              <th></th>
              <th></th>
              </thead>
              <tbody>
              @foreach($categories as $category)
                <tr>
+                   <td>{{$category->works->count()}}</td>
                    <td>{{$category->name}}</td>
                    <td><a href="{{route('categories.edit',$category->id)}}" class="btn btn-info btn-sm">Edit</a>
 

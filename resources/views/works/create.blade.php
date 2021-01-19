@@ -47,6 +47,15 @@
                     <input type="text"  id='link' class="form-control" name="link" value="{{old('link')}}">
                 </div>
 
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select class="form-control" name="category_id" id="category">
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div class="input-group py-3">
                     <div class="custom-file">
                         <input type="file" name="image" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
@@ -65,7 +74,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-success">Add Category</button>
+                    <button class="btn btn-success">Add Job</button>
                 </div>
             </form>
         </div>

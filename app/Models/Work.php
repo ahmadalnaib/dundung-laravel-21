@@ -20,8 +20,14 @@ class Work extends Model
         'image',
         'link',
         'contact',
-        'published_at'
+        'published_at',
+        'category_id',
     ];
+
+    public  function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     public  function deleteImage()
     {

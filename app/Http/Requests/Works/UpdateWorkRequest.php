@@ -29,7 +29,8 @@ class UpdateWorkRequest extends FormRequest
             'location'=>'required',
             'description'=>'required|min:20',
             'link'=>'required',
-            'contact'=>'required'
+            'contact'=>'required',
+            'category_id'=>'required',
         ];
     }
 }

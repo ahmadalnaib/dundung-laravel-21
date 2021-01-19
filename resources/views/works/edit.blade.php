@@ -55,6 +55,21 @@
 
                     </div>
                     @endif
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select class="form-control" name="category_id" id="category">
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}"
+                                    @if($category->id == $work->category_id)
+                                    selected
+                                @endif
+                            >
+                                {{$category->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="input-group py-3">
                     <div class="custom-file">
                         <input type="file" name="image" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">

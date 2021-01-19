@@ -30,7 +30,8 @@ class CreateWorksRequest extends FormRequest
             'description'=>'required|min:20',
             'image'=>'required|mimes:jpeg,png,jpg|max:3000',
             'link'=>'required',
-            'contact'=>'required'
+            'contact'=>'required',
+            'category_id'=>'required',
         ];
     }
 }

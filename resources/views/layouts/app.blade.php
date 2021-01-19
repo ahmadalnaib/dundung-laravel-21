@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css" integrity="sha512-CWdvnJD7uGtuypLLe5rLU3eUAkbzBR3Bm1SFPEaRfvXXI2v2H5Y0057EMTzNuGGRIznt8+128QIDQ8RqmHbAdg==" crossorigin="anonymous" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/dundung.css') }}" rel="stylesheet">
@@ -91,16 +91,16 @@
                 <div class="col-md-4">
                   <ul class="list-group">
                       <li class="list-group-item">
-                          <a href="{{route('works.index')}}">Jobs</a>
+                          <a href="{{route('works.index')}}">👔 Jobs </a>
                       </li>
                       <li class="list-group-item">
-                          <a href="{{route('categories.index')}}">Categories</a>
+                          <a href="{{route('categories.index')}}">✔ Categories </a>
                       </li>
                   </ul>
 
                     <ul class="list-group mt-5">
                         <li class="list-group-item">
-                            <a href="{{route('trashed')}}">Trashed Jobs</a>
+                            <a href="{{route('trashed')}}"> 🗑 Trashed Jobs</a>
                         </li>
                     </ul>
 

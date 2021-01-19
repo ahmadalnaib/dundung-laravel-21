@@ -23,7 +23,7 @@ class CreateWorksTable extends Migration
             $table->string('link');
             $table->string('contact');
             $table->timestamp('published_at')->nullable();
-
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
         });
     }

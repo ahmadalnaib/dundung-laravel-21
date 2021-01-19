@@ -30,7 +30,7 @@
                                 <form action="{{route('restore',$work->id)}}" method="post">
                                     @method('PUT')
                                     @csrf
-                                    <button  type="submit" class="btn btn-danger btn-sm del">Restore</button>
+                                    <button  type="submit" class="btn btn-warning btn-sm del">Restore</button>
                                 </form>
 
                             </td>
