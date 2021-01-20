@@ -37,3 +37,13 @@
 }
 
 
+.option-multiple{
+    padding: 0.30rem;
+    display: inline-block;
+    margin: 0.20rem;
+    background: #888BA1;
+    color: #Fff;
+    cursor: pointer;
+}
+
+

@@ -92,6 +92,11 @@ class TagsController extends Controller
      */
     public function destroy(Tag $tag)
     {
+
+        if($tag->works->count() >0)
+        {
+            return redirect()->back()->with('danger','Tag cannot be deleted because it is associated to some jobs');
+        }
         $tag->delete();
         return redirect()->route('tags.index')
             ->with('danger','Tag has been deleted');

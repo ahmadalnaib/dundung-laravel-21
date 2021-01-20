@@ -48,9 +48,9 @@
                  @if($tags->count() >0)
                 <div class="form-group">
                     <label for="tags">Tags</label>
-                    <select name="tags[]" id="tags" class="form-control" multiple>
+                    <select name="tags[]" id="tags" class="form-control tags-selector" multiple>
                       @foreach($tags as $tag)
-                            <option value="{{$tag->id}}">
+                            <option class="option-multiple" value="{{$tag->id}}">
                                 {{$tag->name}}
                             </option>
 

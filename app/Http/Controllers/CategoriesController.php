@@ -98,6 +98,10 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
+        if($category->works->count() >0)
+        {
+          return redirect()->back()->with('danger','Category cannot be deleted because it has some jobs');
+        }
         $category->delete();
         return redirect()->route('categories.index')
             ->with('danger','Category has been deleted');
