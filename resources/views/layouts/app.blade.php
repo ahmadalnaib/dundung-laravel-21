@@ -89,6 +89,10 @@
                       <li class="list-group-item">
                           <a href="{{route('works.index')}}">👔 Jobs </a>
                       </li>
+                    @if(auth()->user()->isAdmin())
+                      <li class="list-group-item">
+                          <a href="{{route('users')}}">🎨 Users </a>
+                      </li>
                       <li class="list-group-item">
                           <a href="{{route('categories.index')}}">✔ Categories </a>
                       </li>
@@ -96,6 +100,8 @@
                       <li class="list-group-item">
                           <a href="{{route('tags.index')}}">🎈 Tags </a>
                       </li>
+
+                        @endif
                   </ul>
 
                     <ul class="list-group mt-5">
