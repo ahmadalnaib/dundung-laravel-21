@@ -83,4 +83,12 @@ class UsersController extends Controller
     {
         //
     }
+
+    public function makeAdmin(User $user)
+    {
+            $user->role='admin';
+            $user->save();
+            return redirect()->route('users.index')
+                ->with('success','User make admin successfully');
+    }
 }

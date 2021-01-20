@@ -12,6 +12,7 @@
             <div class="card-body">
                 <table class="table">
                     <thead>
+                    <th>Image</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th></th>
@@ -20,13 +21,15 @@
                     <tbody>
                     @foreach($users as $user)
                         <tr>
+                            <td>
+                                <img width="40px" height="40px" style="border-radius:50%" src="{{Gravatar::src($user->email)}}" alt="">
+                            </td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
 
                             <td>
                                 @if(!$user->isAdmin())
-                                <form action="" method="post">
-                                    @method('DELETE')
+                                <form action="{{'users.make-admin',$user->id}}" method="post">
                                     @csrf
                                     <button type="submit" class="btn btn-dark btn-sm d">Make Admin</button>
                                 </form>
