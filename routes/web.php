@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\WorksController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[WelcomeController::class,'index'])->name('welcome.index');
 
 Auth::routes();
 

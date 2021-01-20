@@ -22,7 +22,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/dundung.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="bg-dark">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -62,6 +62,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{route('users.edit-profile')}}">Profile</a>
+                                    <a class="dropdown-item" href="{{route('home')}}">Home</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -79,48 +80,12 @@
             </div>
         </nav>
 
-        <main class="py-4">
+     <main class="py-4">
+         <div class="container">
+             @yield('content')
+         </div>
 
-            @auth
-            <div class="container">
-               @include('partials.messages')
-            <div class="row">
-                <div class="col-md-4">
-                  <ul class="list-group">
-                      <li class="list-group-item">
-                          <a href="{{route('works.index')}}">👔 Jobs </a>
-                      </li>
-                    @if(auth()->user()->isAdmin())
-                      <li class="list-group-item">
-                          <a href="{{route('users.index')}}">🎨 Users </a>
-                      </li>
-                      <li class="list-group-item">
-                          <a href="{{route('categories.index')}}">✔ Categories </a>
-                      </li>
-
-                      <li class="list-group-item">
-                          <a href="{{route('tags.index')}}">🎈 Tags </a>
-                      </li>
-
-                        @endif
-                  </ul>
-
-                    <ul class="list-group mt-5">
-                        <li class="list-group-item">
-                            <a href="{{route('trashed')}}"> 🗑 Trashed Jobs</a>
-                        </li>
-                    </ul>
-
-                </div>
-                <div class="col-md-8">
-                    @yield('content')
-                </div>
-            </div>
-            </div>
-            @else
-                @yield('content')
-            @endauth
-        </main>
+     </main>
     </div>
 
 
