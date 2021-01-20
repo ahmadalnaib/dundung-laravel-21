@@ -101,4 +101,14 @@ class UsersController extends Controller
             return redirect()->route('users.index')
                 ->with('success','User make admin successfully');
     }
+
+    public  function makeNotAdmin(User $user)
+    {
+        $user->role='writer';
+        $user->save();
+        return redirect()->route('users.index')
+            ->with('success','User make not an admin successfully');
+
+
+    }
 }

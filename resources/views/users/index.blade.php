@@ -29,10 +29,17 @@
 
                             <td>
                                 @if(!$user->isAdmin())
-                                <form action="{{'users.make-admin',$user->id}}" method="post">
+                                <form action="{{route('users.make-admin',$user->id)}}" method="post">
                                     @csrf
-                                    <button type="submit" class="btn btn-dark btn-sm d">Make Admin</button>
+                                    <button type="submit" class="btn btn-dark btn-sm">Make Admin</button>
                                 </form>
+                                @else
+                                    <form action="{{route('users.make-Not-admin',$user->id)}}" method="post">
+                                        @csrf
+                                        <button type="submit" class="btn btn-dark btn-sm d">Make User</button>
+                                    </form>
+
+
                                     @endif
                             </td>
 

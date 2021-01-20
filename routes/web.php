@@ -34,13 +34,16 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/works',WorksController::class);
     Route::resource('/tags',TagsController::class);
 
+    Route::get('/users/profile',[UsersController::class,'edit'])->name('users.edit-profile');
+    Route::put('/users/profile',[UsersController::class,'update'])->name('users.update-profile');
+
 });
 
 Route::middleware(['auth', 'admin'])->group(function (){
-    Route::get('/users/profile',[UsersController::class,'edit'])->name('users.edit-profile');
-    Route::put('/users/profile',[UsersController::class,'update'])->name('users.update-profile');
+
     Route::get('/users',[UsersController::class,'index'])->name('users.index');
     Route::post('/users/{user}/make-admin',[UsersController::class,'makeAdmin'])->name('users.make-admin');
+    Route::post('/users/{user}/make-notAdmin',[UsersController::class,'makeNotAdmin'])->name('users.make-Not-admin');
 });
 
 
