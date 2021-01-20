@@ -21,7 +21,7 @@
                     <tbody>
                     @foreach($tags as $tag)
                         <tr>
-
+                               <td>{{$tag->works->count()}}</td>
                             <td>{{$tag->name}}</td>
                             <td><a href="{{route('tags.edit',$tag->id)}}" class="btn btn-info btn-sm">Edit</a>
 

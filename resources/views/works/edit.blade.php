@@ -70,6 +70,22 @@
                         @endforeach
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label for="tags">Tags</label>
+                    <select name="tags[]" id="tags" class="form-control" multiple>
+                        @foreach($tags as $tag)
+                            <option value="{{$tag->id}}"
+                                @if($work->hasTag($tag->id))
+                                      selected
+                                    @endif
+                            >
+                                {{$tag->name}}
+                            </option>
+
+                        @endforeach
+                    </select>
+                </div>
                 <div class="input-group py-3">
                     <div class="custom-file">
                         <input type="file" name="image" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">

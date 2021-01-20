@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Works\CreateWorksRequest;
 use App\Http\Requests\works\UpdateWorkRequest;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Models\Work;
 use Illuminate\Support\Facades\Storage;
@@ -38,7 +39,8 @@ class WorksController extends Controller
     public function create()
     {
         $categories=Category::all();
-        return view('works.create',compact('categories'));
+        $tags=Tag::all();
+        return view('works.create',compact('categories','tags'));
     }
 
     /**
@@ -52,7 +54,7 @@ class WorksController extends Controller
 //        upload the image
         $image= '/storage/'.$request->file('image')->store('works');
 
-        Work::create([
+        $work= Work::create([
             'name'=>$request->name,
             'title'=>$request->title ,
             'location'=>$request->location,
@@ -63,6 +65,11 @@ class WorksController extends Controller
             'published_at'=>$request->published_at,
             'category_id'=>$request->category_id,
         ]);
+
+        if($request->tags)
+        {
+            $work->tags()->attach($request->tags);
+        }
 
         return redirect()->route('works.index')
                ->with('success','Job created successfully');
@@ -90,7 +97,9 @@ class WorksController extends Controller
     public function edit(Work $work)
     {
         $categories=Category::all();
-        return view('works.edit',compact('work','categories'));
+
+        return view('works.edit',compact('work','categories'))
+            ->with('tags',Tag::all());
     }
 
     /**
@@ -123,6 +132,11 @@ class WorksController extends Controller
 
             $data['image']= $image;
         }
+
+            //sync method good for many to many relationships
+            $work->tags()->sync($request->tags);
+
+
         $work->update($data);
 
 

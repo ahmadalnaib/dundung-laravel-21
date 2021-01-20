@@ -28,9 +28,18 @@ class Work extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public  function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 
     public  function deleteImage()
     {
         Storage::delete($this->image);
+    }
+//function if the job has tag
+    public function hasTag($tagId)
+    {
+        return in_array($tagId,$this->tags->pluck('id')->toArray());
     }
 }
