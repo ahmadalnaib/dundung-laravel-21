@@ -36,7 +36,7 @@
                         <div class="gap-xy-3 mt-6">
                              @foreach($work->tags as $tag)
 
-                                <a href="" class="badge badge-pill badge-secondary">{{$tag->name}}</a>
+                                <a href="{{route('job.tag',$tag->id)}}" class="badge badge-pill badge-secondary">{{$tag->name}}</a>
                             @endforeach
                         </div>
                     </div>

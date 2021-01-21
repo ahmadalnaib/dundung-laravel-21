@@ -24,6 +24,9 @@ Route::get('/',[WelcomeController::class,'index'])->name('welcome.index');
 
 Route::get('/jobs',[JobsController::class,'index'])->name('jobs');
 Route::resource('/works',WorksController::class);
+//for category and tags
+Route::get('/jobs/categories/{category}',[JobsController::class,'category'])->name('job.category');
+Route::get('/jobs/tags/{tag}',[JobsController::class,'tag'])->name('job.tag');
 
 Auth::routes();
 
