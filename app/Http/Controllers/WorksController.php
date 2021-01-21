@@ -18,6 +18,10 @@ class WorksController extends Controller
     {
         $this->middleware('verifiedCategoryCount')
               ->only('create','store');
+
+        $this->middleware('auth')
+            ->only('create','store','edit','update','destroy');
+
     }
     /**
      * Display a listing of the resource.
@@ -64,6 +68,7 @@ class WorksController extends Controller
             'contact'=>$request->contact,
             'published_at'=>$request->published_at,
             'category_id'=>$request->category_id,
+            'user_id'=>auth()->user()->id,
         ]);
 
         if($request->tags)
@@ -83,9 +88,10 @@ class WorksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Work $work)
     {
-        //
+        $categories=Category::all();
+        return view('works.show',compact('work','categories'));
     }
 
     /**

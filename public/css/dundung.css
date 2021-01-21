@@ -46,4 +46,21 @@
     cursor: pointer;
 }
 
+body {
+    background: #f3f5f9;
+}
 
+.bg-showcase{
+    background: #212c42;
+
+}
+
+
+.bg-screen{
+    background:url("../img/a.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+
+}

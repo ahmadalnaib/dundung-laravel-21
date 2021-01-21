@@ -1,10 +1,6 @@
 @extends('layouts.app')
-
-
 @section('content')
-
-
-
+    <div class="container mt-5">
     <div class="card card-default">
         <div class="card-header">Delete Jobs</div>
 
@@ -56,5 +52,6 @@
                 <p>There are no jobs</p>
             </div>
         @endif
+    </div>
     </div>
 @endsection

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container mt-5">
     <div class="card card-default">
         <div class="card-header">
             Create tag
@@ -19,5 +20,6 @@
                 </div>
             </form>
         </div>
+    </div>
     </div>
 @endsection

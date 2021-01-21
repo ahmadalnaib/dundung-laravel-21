@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->role =='admin';
     }
+
+    public  function works()
+    {
+        return $this->hasMany(Work::class);
+    }
 }

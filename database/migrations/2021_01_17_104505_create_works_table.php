@@ -19,6 +19,11 @@ class CreateWorksTable extends Migration
             $table->string('title');
             $table->string('location');
             $table->text('description');
+            $table->unsignedBigInteger('user_id')->index();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->string('image');
             $table->string('link');
             $table->string('contact');
