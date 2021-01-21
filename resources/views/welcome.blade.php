@@ -38,6 +38,7 @@
 
         </div>
     </div>
+        {{ $works->links() }}
     </div>
 
 @endsection

@@ -30,7 +30,7 @@ class WorksController extends Controller
      */
     public function index()
     {
-        $works=Work::latest()->simplePaginate(4);
+        $works=Work::latest()->simplePaginate(8);
         return view('works.index',compact('works'));
 
     }

@@ -11,7 +11,7 @@ class JobsController extends Controller
 {
    public  function index()
    {
-       $works=Work::all();
+       $works=Work::latest()->simplePaginate(8);
        $categories=Category::all();
        return view('jobs.index',compact('works','categories'));
    }
