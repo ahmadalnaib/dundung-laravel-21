@@ -12,7 +12,7 @@ class JobsController extends Controller
 {
    public  function index()
    {
-       $works=Work::latest()->simplePaginate(8);
+       $works=Work::latest()->paginate(2);
        $categories=Category::all();
        return view('jobs.index',compact('works','categories'));
    }
@@ -21,7 +21,7 @@ class JobsController extends Controller
     {
       return view('jobs.category')
           ->with('category',$category)
-          ->with('works',$category->works()->searched()->simplePaginate(3))
+          ->with('works',$category->works()->searched()->paginate(3))
           ->with('categories',Category::all());
     }
 
@@ -29,7 +29,7 @@ class JobsController extends Controller
     {
         return view('jobs.tag')
             ->with('tag',$tag)
-            ->with('works',$tag->works()->searched()->simplePaginate(3))
+            ->with('works',$tag->works()->searched()->paginate(3))
             ->with('tags',Tag::all())
             ->with('categories',Category::all());
     }
