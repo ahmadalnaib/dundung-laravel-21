@@ -21,7 +21,7 @@ class JobsController extends Controller
     {
       return view('jobs.category')
           ->with('category',$category)
-          ->with('works',$category->works()->simplePaginate(3))
+          ->with('works',$category->works()->searched()->simplePaginate(3))
           ->with('categories',Category::all());
     }
 
@@ -29,7 +29,7 @@ class JobsController extends Controller
     {
         return view('jobs.tag')
             ->with('tag',$tag)
-            ->with('works',$tag->works()->simplePaginate(3))
+            ->with('works',$tag->works()->searched()->simplePaginate(3))
             ->with('tags',Tag::all())
             ->with('categories',Category::all());
     }
