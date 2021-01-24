@@ -24,6 +24,7 @@
              </thead>
              <tbody>
             @foreach($works as $work)
+                @can('delete',$work)
                 <tr>
                     <td>
                         <a href="{{route('categories.edit',$work->category->id)}}">   {{$work->category->name}}</a>
@@ -35,7 +36,8 @@
                         <a href="{{route('works.edit',$work->id)}}" class="btn btn-info btn-sm">Edit</a>
                     </td>
 
-                    @can('delete',$work)
+
+
                     <td>
                         <form action="{{route('works.destroy',$work->id)}}" method="post">
                             @method('DELETE')
@@ -43,13 +45,15 @@
                             <button onclick="return confirm('Are you sure you want to delete this job ?')" type="submit" class="btn btn-danger btn-sm del">Trash</button>
                         </form>
                     </td>
-              @endcan
+
+
+                    @endcan
 
                 </tr>
             @endforeach
              </tbody>
          </table>
-            <div class="pagin">  {!! $works->links() !!}</div>
+            <div class="pagin">  {!! $works->links() !!} </div>
         </div>
 
 

@@ -14,7 +14,7 @@ class WelcomeController extends Controller
 
 
         return view('welcome')
-               ->with('works',Work::searched()->simplePaginate(8))
+               ->with('works',Work::searched()->simplePaginate(3))
                ->with('categories',Category::all())
                ->with('tags',Tag::all());
 
