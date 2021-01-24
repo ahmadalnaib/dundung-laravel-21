@@ -158,6 +158,7 @@ class WorksController extends Controller
      */
     public function destroy($id)
     {
+
         $work=Work::withTrashed()->where('id',$id)->firstOrFail();
 
         if($work->trashed())
@@ -166,6 +167,7 @@ class WorksController extends Controller
            $work->deleteImage();
             $work->forceDelete();
         } else {
+            $this->authorize('delete',$work);
             $work->delete();
         }
         return redirect()->back()

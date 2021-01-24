@@ -26,12 +26,12 @@ class Work extends Model
     ];
 
 
-    public function ownsBy(User $user)
-    {
-
-        return $user->id === $this->user_id;
-
-    }
+//    public function ownsBy(User $user)
+//    {
+//
+//        return $user->id === $this->user_id;
+//
+//    }
 
     public  function category()
     {

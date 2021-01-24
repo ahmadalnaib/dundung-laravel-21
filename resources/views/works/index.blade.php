@@ -35,7 +35,7 @@
                         <a href="{{route('works.edit',$work->id)}}" class="btn btn-info btn-sm">Edit</a>
                     </td>
 
-                    @if($work->ownsBy(auth()->user()))
+                    @can('delete',$work)
                     <td>
                         <form action="{{route('works.destroy',$work->id)}}" method="post">
                             @method('DELETE')
@@ -43,7 +43,7 @@
                             <button onclick="return confirm('Are you sure you want to delete this job ?')" type="submit" class="btn btn-danger btn-sm del">Trash</button>
                         </form>
                     </td>
-              @endif
+              @endcan
 
                 </tr>
             @endforeach

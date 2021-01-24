@@ -2,7 +2,7 @@
     <div class="col-md-8 px-0">
         <h1 class="display-4 font-italic">Ready to get something awesome?</h1>
         <p class="lead my-3">Practical screencasts for awesome developers..</p>
-        <form action="{{route('welcome.index')}}" method="GET">
+        <form action="{{route('jobs')}}" method="GET">
             <div class="input-group input-group-lg mb-3">
                 <input name="search" type="text" value="{{request()->query('search')}}" class="form-control py-4" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="What would you like to search? e.g. Helfer, Amazon">
             </div>
